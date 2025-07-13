@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events - Fewinfos</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <h2>Fewinfos</h2>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="join-btn">Join Us</button>
+      </div>
+    </header>
+
+    <!-- Events Section -->
+    <section class="events-section">
+      <div class="container">
+        <h1 class="section-title" data-aos="fade-in">
+          What's Happening at Fewinfos?
+        </h1>
+
+        <!-- Live Events Section -->
+        <div
+          class="live-events-section"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          <h2 class="live-events-title">🔴 LIVE EVENTS</h2>
+          <div class="live-events-grid" id="liveEventsGrid">
+            <!-- Live AI Tools Workshop -->
+            <div class="live-event-card" data-aos="zoom-in">
+              <div class="live-indicator">
+                <span class="live-dot"></span>
+                <span>LIVE NOW</span>
+              </div>
+              <h3 class="live-event-title">
+                AI Tools Workshop - Online Edition
+              </h3>
+              <div class="live-event-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>July 13, 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>6 hours</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-users"></i>
+                  <span>AI Expert Team</span>
+                </div>
+              </div>
+              <p class="live-event-description">
+                🚀 Master 19 cutting-edge AI tools for programming, content
+                creation, website building, and startup growth. Live interactive
+                session with real-time Q&A and hands-on exercises.
+              </p>
+              <div class="ai-tools-showcase">
+                <h4>🤖 Featured AI Tools:</h4>
+                <div class="tools-preview-grid" id="toolsPreviewGrid">
+                  <!-- Tools will be populated by JavaScript -->
+                </div>
+                <div class="protected-content-info">
+                  <p>
+                    🔒 <strong>Premium Content:</strong> Access to all 19 AI
+                    tools requires workshop registration.
+                  </p>
+                  <p>
+                    💡 Enter access code to unlock detailed tool descriptions,
+                    sample prompts, and direct links.
+                  </p>
+                </div>
+              </div>
+              <div class="live-event-actions">
+                <div class="event-price">
+                  ₹999 <span class="original-price">₹1999</span>
+                </div>
+                <button class="join-live-btn" onclick="joinLiveEvent()">
+                  🔐 Join Live Event
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regular Events Section -->
+        <div
+          class="regular-events-section"
+          data-aos="fade-in"
+          data-aos-delay="300"
+        >
+          <h2 class="section-subtitle">Upcoming & Past Events</h2>
+
+          <!-- Filter Buttons -->
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">
+              All Events
+            </button>
+            <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+            <button class="filter-btn" data-filter="completed">
+              Completed
+            </button>
+          </div>
+
+          <!-- Events Grid -->
+          <div class="events-grid" id="eventsGrid">
+            <!-- Other events will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Fewinfos</h3>
+            <p class="tagline">Powered by Passion. Driven by Curiosity.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Fewinfos. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+      // Enhanced Live Events functionality (No alerts/notifications)
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Page loaded. Initializing live events...");
+
+        // Initialize Tools Preview Grid
+        initializeToolsPreview();
+
+        // Initialize remaining events from eventsData (skip the AI workshop)
+        if (eventsData.length > 1) {
+          const eventsGrid = document.getElementById("eventsGrid");
+
+          // Render remaining events (skip the first one as it's in live section)
+          eventsData.slice(1).forEach((event, index) => {
+            const eventCard = document.createElement("div");
+            eventCard.className = "event-card";
+            eventCard.setAttribute("data-aos", "fade-up");
+            eventCard.setAttribute(
+              "data-aos-delay",
+              ((index + 1) * 100).toString()
+            );
+
+            eventCard.innerHTML = `
+              <h3 class="event-title">${event.title}</h3>
+              <p class="event-date">${formatDate(event.date)}</p>
+              <p class="event-location"><i class="fas fa-map-marker-alt"></i> ${
+                event.location
+              }</p>
+              <p class="event-description">${event.description}</p>
+              <button class="register-btn">${
+                isUpcoming(event.date) ? "Register Now" : "View Details"
+              }</button>
+            `;
+
+            eventsGrid.appendChild(eventCard);
+          });
+
+          // Refresh AOS animations
+          AOS.refresh();
+        }
+      });
+
+      // Initialize AI Tools Preview in Live Event Card
+      function initializeToolsPreview() {
+        const toolsGrid = document.getElementById("toolsPreviewGrid");
+        if (!toolsGrid || !aiToolsData) return;
+
+        // Show first 6 tools as preview
+        const previewTools = aiToolsData.slice(0, 6);
+
+        previewTools.forEach((tool, index) => {
+          const toolItem = document.createElement("div");
+          toolItem.className = "tool-preview-item";
+          toolItem.setAttribute("data-aos", "fade-in");
+          toolItem.setAttribute("data-aos-delay", (index * 100).toString());
+
+          const toolName = tool.topic.split(" - ")[1] || tool.topic;
+
+          toolItem.innerHTML = `
+            <div class="tool-icon">${tool.level}</div>
+            <span class="tool-name">${toolName}</span>
+          `;
+
+          toolsGrid.appendChild(toolItem);
+        });
+      }
+
+      // Join Live Event Function
+      function joinLiveEvent() {
+        showPasswordModal();
+      }
+
+      // Show Password Modal (Password Required for AI Tools Access)
+      function showPasswordModal() {
+        const modal = document.createElement("div");
+        modal.className = "password-modal";
+        modal.id = "passwordModal";
+        modal.innerHTML = `
+          <div class="password-modal-content">
+            <h3>🔐 AI Tools Workshop Access</h3>
+            <div class="live-badge" style="margin-bottom: 1rem;">🔴 LIVE EVENT - July 13, 2025</div>
+            <p>Enter your access code to join the live AI workshop session.</p>
+            <div class="password-input-group">
+              <input type="password" class="password-input" placeholder="Enter access code" maxlength="10" id="passwordField">
+              <span class="password-hint">💡 Hint: FIW123</span>
+            </div>
+            <div class="error-message" id="errorMessage">❌ Incorrect passcode. Please try again.</div>
+            <div class="button-group">
+              <button class="password-submit" id="submitPassword">🚀 Join Workshop</button>
+              <button class="password-cancel" id="cancelPassword">❌ Cancel</button>
+            </div>
+            <div class="workshop-info">
+              <p><strong>What's included:</strong></p>
+              <ul>
+                <li>19 Premium AI Tools Access</li>
+                <li>Live Interactive Session</li>
+                <li>Sample Prompts & Use Cases</li>
+                <li>Q&A with AI Experts</li>
+                <li>Certificate of Completion</li>
+              </ul>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(modal);
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+
+        const passwordInput = document.getElementById("passwordField");
+        const submitBtn = document.getElementById("submitPassword");
+        const cancelBtn = document.getElementById("cancelPassword");
+        const errorMsg = document.getElementById("errorMessage");
+
+        passwordInput.focus();
+
+        function closeModal() {
+          if (document.body.contains(modal)) {
+            document.body.removeChild(modal);
+            document.body.style.overflow = "auto";
+          }
+        }
+
+        function checkPassword() {
+          const enteredPassword = passwordInput.value.trim();
+
+          if (enteredPassword === sitePasscode) {
+            closeModal();
+
+            // Show success and open AI tools
+            setTimeout(() => {
+              showSuccessMessage();
+              showAIToolsModal(1);
+            }, 300);
+          } else {
+            errorMsg.style.display = "block";
+            passwordInput.value = "";
+            passwordInput.focus();
+            passwordInput.style.borderColor = "#ff4757";
+
+            setTimeout(() => {
+              errorMsg.style.display = "none";
+              passwordInput.style.borderColor = "#F5F5F5";
+            }, 3000);
+          }
+        }
+
+        submitBtn.addEventListener("click", checkPassword);
+        cancelBtn.addEventListener("click", closeModal);
+
+        passwordInput.addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            checkPassword();
+          }
+        });
+
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      // Show Success Message (No alert, use styled notification)
+      function showSuccessMessage() {
+        const successDiv = document.createElement("div");
+        successDiv.className = "success-notification";
+        successDiv.innerHTML = `
+          <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h4>Welcome to AI Tools Workshop!</h4>
+            <p>Access granted. Explore 19 cutting-edge AI tools.</p>
+          </div>
+        `;
+
+        document.body.appendChild(successDiv);
+
+        setTimeout(() => {
+          if (document.body.contains(successDiv)) {
+            document.body.removeChild(successDiv);
+          }
+        }, 3000);
+      }
+
+      // Enhanced AI Tools Modal (No console logs in production)
+      function showAIToolsModal(eventId) {
+        let toolsToShow = aiToolsData;
+        let eventTitle = "AI Tools Workshop - Live Event";
+
+        if (!toolsToShow || toolsToShow.length === 0) {
+          showErrorMessage("AI tools data not available");
+          return;
+        }
+
+        const modal = document.createElement("div");
+        modal.className = "ai-tools-modal";
+        modal.id = "aiToolsModal";
+
+        const toolsHtml = toolsToShow
+          .map((tool, index) => {
+            if (tool.type === 2) {
+              return `
+              <div class="ai-tool-card" data-level="${tool.level}">
+                <span class="ai-tool-level">Level ${tool.level}</span>
+                <h4 class="ai-tool-title">${tool.topic}</h4>
+                <p class="ai-tool-description">${tool.content}</p>
+                <div class="ai-tool-type">📝 Information Tool</div>
+              </div>
+            `;
+            } else {
+              return `
+              <div class="ai-tool-card" data-level="${tool.level}">
+                <span class="ai-tool-level">Level ${tool.level}</span>
+                <h4 class="ai-tool-title">${tool.topic}</h4>
+                <p class="ai-tool-description">${tool.description}</p>
+                ${
+                  tool.prompt
+                    ? `
+                  <div class="ai-tool-prompt">
+                    <strong>💡 Sample Prompt:</strong><br>
+                    <em>"${tool.prompt}"</em>
+                  </div>
+                `
+                    : ""
+                }
+                ${
+                  tool.link
+                    ? `
+                  <div class="ai-tool-actions">
+                    <a href="${tool.link}" target="_blank" class="ai-tool-link">
+                      🚀 Try Now <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </div>
+                `
+                    : ""
+                }
+              </div>
+            `;
+            }
+          })
+          .join("");
+
+        modal.innerHTML = `
+          <div class="ai-tools-modal-content">
+            <span class="close-ai-modal" title="Close">&times;</span>
+            <div class="modal-header">
+              <h2 style="color: #003366; margin-bottom: 0.5rem;">🤖 ${eventTitle}</h2>
+              <div class="live-badge">🔴 LIVE EVENT - July 13, 2025</div>
+              <p style="color: #666; margin-bottom: 2rem;">
+                Master <strong>${toolsToShow.length}</strong> cutting-edge AI tools in this comprehensive workshop.
+                Each tool includes detailed descriptions, sample prompts, and direct access links.
+              </p>
+            </div>
+            <div class="ai-tools-grid">
+              ${toolsHtml}
+            </div>
+            <div class="modal-footer">
+              <p style="text-align: center; color: #666; margin-top: 2rem;">
+                🎯 <strong>Workshop Price:</strong> ₹999 | 📅 <strong>Duration:</strong> 6 hours | 👨‍🏫 <strong>Instructor:</strong> AI Expert Team
+              </p>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(modal);
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+
+        const closeBtn = modal.querySelector(".close-ai-modal");
+        closeBtn.addEventListener("click", function () {
+          if (document.body.contains(modal)) {
+            document.body.removeChild(modal);
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            if (document.body.contains(modal)) {
+              document.body.removeChild(modal);
+              document.body.style.overflow = "auto";
+            }
+          }
+        });
+
+        const escapeHandler = function (e) {
+          if (e.key === "Escape") {
+            if (document.body.contains(modal)) {
+              document.body.removeChild(modal);
+              document.body.style.overflow = "auto";
+            }
+            document.removeEventListener("keydown", escapeHandler);
+          }
+        };
+        document.addEventListener("keydown", escapeHandler);
+      }
+
+      // Show Error Message (No alert, use styled notification)
+      function showErrorMessage(message) {
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "error-notification";
+        errorDiv.innerHTML = `
+          <div class="error-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h4>Error</h4>
+            <p>${message}</p>
+          </div>
+        `;
+
+        document.body.appendChild(errorDiv);
+
+        setTimeout(() => {
+          if (document.body.contains(errorDiv)) {
+            document.body.removeChild(errorDiv);
+          }
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
