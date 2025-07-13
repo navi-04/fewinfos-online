@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fewinfos - Events & Innovation Hub</title>
+    <title>Gallery - Fewinfos</title>
     <link rel="stylesheet" href="styles.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link
@@ -20,9 +20,9 @@
         </div>
         <nav class="nav">
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="events.html">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
@@ -30,26 +30,37 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-overlay"></div>
+    <!-- Gallery Section -->
+    <section class="gallery-section">
       <div class="container">
-        <div class="hero-content" data-aos="fade-in" data-aos-duration="1000">
-          <h1 class="hero-title">Events That Inspire. Moments That Matter.</h1>
-          <p class="hero-subtitle">
-            Discover our latest workshops, webinars, and innovation hubs.
-          </p>
-          <button
-            class="cta-btn"
-            data-aos="slide-up"
-            data-aos-delay="300"
-            onclick="window.location.href='events.html'"
-          >
-            View Upcoming Events
-          </button>
+        <h1 class="section-title" data-aos="fade-in">Past Highlights</h1>
+
+        <!-- Filter Tags -->
+        <div class="tag-filters" data-aos="fade-in" data-aos-delay="200">
+          <button class="tag-btn active" data-tag="all">All</button>
+          <button class="tag-btn" data-tag="2025">2025</button>
+          <button class="tag-btn" data-tag="2024">2024</button>
+          <button class="tag-btn" data-tag="2023">2023</button>
+          <button class="tag-btn" data-tag="workshops">Workshops</button>
+          <button class="tag-btn" data-tag="webinars">Webinars</button>
+          <button class="tag-btn" data-tag="summits">Summits</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery items will be populated by JavaScript -->
         </div>
       </div>
     </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+      <div class="lightbox-content">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="" />
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
