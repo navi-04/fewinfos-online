@@ -30,7 +30,7 @@
       </div>
     </header>
 
-    <!-- Events Section -->
+    <!-- Events Section with Tabs Only -->
     <section class="events-section">
       <div class="container">
         <h1 class="section-title" data-aos="fade-in">
@@ -123,55 +123,5 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
-
-    <script>
-      // Initialize the events page with tab functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        // Make sure AOS is initialized
-        if (typeof AOS !== "undefined") {
-          AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
-          });
-        }
-
-        // Initialize tab functionality if not already done in script.js
-        const tabButtons = document.querySelectorAll(".tab-btn");
-        const tabContents = document.querySelectorAll(".tab-content");
-
-        if (tabButtons.length > 0) {
-          // Tab switching functionality
-          tabButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-              const targetTab = button.getAttribute("data-tab");
-
-              // Remove active class from all tabs and contents
-              tabButtons.forEach((btn) => btn.classList.remove("active"));
-              tabContents.forEach((content) =>
-                content.classList.remove("active")
-              );
-
-              // Add active class to clicked tab and corresponding content
-              button.classList.add("active");
-              const targetContent = document.getElementById(targetTab + "-tab");
-              if (targetContent) {
-                targetContent.classList.add("active");
-              }
-
-              // Populate events based on selected tab
-              if (typeof populateEvents === "function") {
-                populateEvents(targetTab);
-              }
-            });
-          });
-
-          // Initialize with live events
-          if (typeof populateEvents === "function") {
-            populateEvents("live");
-          }
-        }
-      });
-    </script>
   </body>
 </html>

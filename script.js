@@ -672,32 +672,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const tabButtons = document.querySelectorAll(".tab-btn");
   const tabContents = document.querySelectorAll(".tab-content");
 
-  // Tab switching functionality
-  tabButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const targetTab = button.getAttribute("data-tab");
-
-      // Remove active class from all tabs and contents
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
-      tabContents.forEach((content) => content.classList.remove("active"));
-
-      // Add active class to clicked tab and corresponding content
-      button.classList.add("active");
-      const targetContent = document.getElementById(targetTab + "-tab");
-      if (targetContent) {
-        targetContent.classList.add("active");
-      }
-
-      // Populate events based on selected tab
-      populateEvents(targetTab);
-    });
-  });
-
-  // Initialize with live events if we have tabs, otherwise use regular events page
+  // Only initialize tabs if they exist (events.html page)
   if (tabButtons.length > 0) {
+    // Tab switching functionality
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetTab = button.getAttribute("data-tab");
+
+        // Remove active class from all tabs and contents
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabContents.forEach((content) => content.classList.remove("active"));
+
+        // Add active class to clicked tab and corresponding content
+        button.classList.add("active");
+        const targetContent = document.getElementById(targetTab + "-tab");
+        if (targetContent) {
+          targetContent.classList.add("active");
+        }
+
+        // Populate events based on selected tab
+        populateEvents(targetTab);
+      });
+    });
+
+    // Initialize with live events
     populateEvents("live");
-  } else if (document.getElementById("eventsGrid")) {
-    // This is the old events page, initialize with all events
+  }
+
+  // Initialize old events page if eventsGrid exists
+  if (document.getElementById("eventsGrid") && !tabButtons.length) {
     renderEvents();
   }
 

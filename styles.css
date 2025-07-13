@@ -473,6 +473,33 @@ body {
   box-shadow: 0 8px 25px rgba(0, 51, 102, 0.4);
 }
 
+/* AI Tools Preview in Event Cards */
+.ai-tools-preview {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin: 1rem 0;
+  border-left: 5px solid var(--primary-color);
+}
+
+.ai-tools-preview h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tools-count {
+  background: var(--primary-color);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 /* Empty State */
 .empty-state {
   text-align: center;
