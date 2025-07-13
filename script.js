@@ -199,8 +199,8 @@ if (
         // Show success message
         setTimeout(() => {
           showSuccessNotification();
-          // Open the AI tools modal
-          showAIToolsModal(eventId);
+          // Redirect to AI tools page instead of modal
+          window.location.href = "ai-tools.html";
         }, 300);
       } else {
         console.log("❌ Password incorrect");
@@ -766,6 +766,9 @@ function createEventCard(event, index) {
 
   const statusClass = event.status || "upcoming";
   const statusText = statusClass.charAt(0).toUpperCase() + statusClass.slice(1);
+
+  // Add status data attribute for CSS animations
+  card.setAttribute("data-status", statusClass);
 
   // Create action button based on event type
   let actionButton = "";
