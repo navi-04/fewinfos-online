@@ -2,406 +2,393 @@
 const sitePasscode = "FIW123";
 
 // AI Tools Workshop Data
-const aiToolsData = [
+const aiToolsData =  [
+  // 0–8: WEBSITE CREATION TOOLS
   {
-    type: 1,
+    type: 0,
     level: 0,
-    topic: "VIDEO - VEED",
-    description:
-      "An online video editing tool with AI features for subtitles, noise removal, and more.",
-    link: "https://www.veed.io/",
-    prompt:
-      "Create a promotional video with subtitles and background music using AI.",
+    topic: "WEBSITE - FRAMER",
+    description: "AI-powered website builder for creating animated, responsive sites.",
+    link: "https://www.framer.com/",
+    prompt: "Build a portfolio website for a UX designer."
   },
   {
-    type: 1,
+    type: 0,
     level: 1,
-    topic: "VIDEO - PIXVERSE",
-    description:
-      "Convert a single image into animated video clips using AI-powered motion synthesis.",
-    link: "https://www.pixverse.ai/",
-    prompt: "Animate a portrait photo into a realistic head-turning video.",
+    topic: "WEBSITE - DORA",
+    description: "Visual design and animation tool for website building.",
+    link: "https://www.dora.run/",
+    prompt: "Create a landing page for a photography studio."
   },
   {
-    type: 1,
+    type: 0,
     level: 2,
-    topic: "VIDEO - HEYGEN",
-    description:
-      "Create talking avatar videos using AI from text input and static images.",
-    link: "https://www.heygen.com/",
-    prompt: "Generate an avatar that introduces my company using the script.",
+    topic: "WEBSITE - SPLINE",
+    description: "3D design tool to create interactive web graphics and animations.",
+    link: "https://spline.design/",
+    prompt: "Make a 3D animation of floating text on homepage."
   },
   {
-    type: 1,
+    type: 0,
     level: 3,
-    topic: "VIDEO - ELEVENLABS",
-    description:
-      "AI voice generator that creates realistic voiceovers using text input.",
-    link: "https://www.elevenlabs.io/",
-    prompt:
-      "Generate a voiceover in a calm male voice saying a 1-minute welcome speech.",
+    topic: "WEBSITE - CLAUDE",
+    description: "Advanced AI assistant for content generation and creative development.",
+    link: "https://claude.ai/",
+    prompt: "Write HTML + CSS for login form."
   },
   {
-    type: 1,
+    type: 0,
     level: 4,
-    topic: "AGENT - TASKADE",
-    description:
-      "Collaborative task manager with AI agents for task generation and automation.",
-    link: "https://www.taskade.com/",
-    prompt: "Create a weekly task planner for a web development project.",
+    topic: "WEBSITE - LOVABLE",
+    description: "AI website builder for modern portfolio and startup pages.",
+    link: "https://lovable.dev/",
+    prompt: "Generate a tech startup homepage with sections."
   },
   {
-    type: 1,
+    type: 0,
     level: 5,
-    topic: "AI WEBINAR - MONICA",
-    description:
-      "AI assistant for summarizing emails, documents, and web pages in Chrome.",
-    link: "https://monica.im/",
-    prompt: "Summarize this PDF into key bullet points.",
+    topic: "WEBSITE - BOLT.NEW",
+    description: "Launch and publish projects quickly with AI-based templates.",
+    link: "https://bolt.new/",
+    prompt: "Generate a startup portfolio website layout."
   },
   {
-    type: 1,
+    type: 0,
     level: 6,
-    topic: "AI WEBINAR - TACTIQ",
-    description:
-      "Meeting summarizer that captures and transcribes Google Meet/Zoom calls.",
-    link: "https://tactiq.io/",
-    prompt: "Summarize the meeting into key takeaways.",
+    topic: "WEBSITE - TRICKLE.AI",
+    description: "AI-powered note and website organizer to publish personal knowledge.",
+    link: "https://trickle.so/",
+    prompt: "Create a micro-site from these study notes."
   },
   {
-    type: 1,
+    type: 0,
     level: 7,
-    topic: "AI WEBINAR - SLIDOR",
-    description:
-      "AI-powered tool for creating professional presentations quickly.",
-    link: "https://www.slidor.com/",
-    prompt: "Generate slides for an AI in Education topic.",
+    topic: "WEBSITE - REPLIT",
+    description: "Collaborative browser-based IDE with AI tools.",
+    link: "https://replit.com/",
+    prompt: "Build a blog with Python and HTML."
   },
   {
-    type: 1,
+    type: 0,
     level: 8,
-    topic: "AI WEBINAR - GRAMMARLY",
-    description:
-      "AI tool for grammar, spelling, and tone suggestions in real-time writing.",
-    link: "https://www.grammarly.com/",
-    prompt: "Check grammar and clarity for this email.",
+    topic: "WEBSITE - WEBDRAW",
+    description: "No-code website builder with drag-drop design.",
+    link: "https://webdraw.com/",
+    prompt: "Design a job application portal UI."
   },
+
+  // 9–12: VIDEO TOOLS
   {
     type: 1,
     level: 9,
-    topic: "IMAGE - IMGGOOD",
-    description: "Image enhancement and background removal tool powered by AI.",
-    link: "https://imggood.com/",
-    prompt: "Enhance this blurry image and remove its background.",
+    topic: "VIDEO - VEED",
+    description: "An online video editing tool with AI features for subtitles, noise removal, and more.",
+    link: "https://www.veed.io/",
+    prompt: "Create a promotional video with subtitles and background music using AI."
   },
   {
     type: 1,
     level: 10,
-    topic: "IMAGE - OPENART",
-    description:
-      "Text-to-image AI tool for generating visual artwork and branding images.",
-    link: "https://openart.ai/",
-    prompt: "Generate an illustration for a tech conference poster.",
+    topic: "VIDEO - PIXVERSE",
+    description: "Convert a single image into animated video clips using AI-powered motion synthesis.",
+    link: "https://www.pixverse.ai/",
+    prompt: "Animate a portrait photo into a realistic head-turning video."
   },
   {
     type: 1,
     level: 11,
-    topic: "IMAGE - IDEOGRAM",
-    description: "AI image generator that turns ideas into visual concepts.",
-    link: "https://ideogram.ai/",
-    prompt: "Design a banner image showing futuristic education.",
+    topic: "VIDEO - HEYGEN",
+    description: "Create talking avatar videos using AI from text input and static images.",
+    link: "https://www.heygen.com/",
+    prompt: "Generate an avatar that introduces my company using the script."
   },
   {
     type: 1,
     level: 12,
-    topic: "IMAGE - PLAYGROUND",
-    description:
-      "Playground for experimenting with AI-generated images and prompts.",
-    link: "https://playground.com/",
-    prompt: "Create a concept image of a floating AI city.",
+    topic: "VIDEO - ELEVENLABS",
+    description: "AI voice generator that creates realistic voiceovers using text input.",
+    link: "https://www.elevenlabs.io/",
+    prompt: "Generate a voiceover in a calm male voice saying a 1-minute welcome speech."
+  },
+
+  // 13: AGENT TOOL
+  {
+    type: 2,
+    level: 13,
+    topic: "AGENT - TASKADE",
+    description: "Collaborative task manager with AI agents for task generation and automation.",
+    link: "https://www.taskade.com/",
+    prompt: "Create a weekly task planner for a web development project."
+  },
+
+  // 14–16: EXTENSIONS
+  {
+    type: 3,
+    level: 14,
+    topic: "EXTENSION - MONICA",
+    description: "AI assistant for summarizing emails, documents, and web pages in Chrome.",
+    link: "https://monica.im/",
+    prompt: "Summarize this PDF into key bullet points."
   },
   {
-    type: 1,
-    level: 13,
+    type: 3,
+    level: 15,
+    topic: "EXTENSION - TACTIQ",
+    description: "Meeting summarizer that captures and transcribes Google Meet/Zoom calls.",
+    link: "https://tactiq.io/",
+    prompt: "Summarize the meeting into key takeaways."
+  },
+  {
+    type: 3,
+    level: 16,
+    topic: "EXTENSION - SIDER",
+    description: "AI-powered Chrome extension with a sidebar that lets you chat with multiple AI models, generate presentations, summarize content, translate, and interact with files.",
+    link: "https://sider.ai/",
+    prompt: "Generate slides for the topic 'AI in Education'."
+  },
+
+  // 17–45: REMAINING TOOLS
+  {
+    type: 4,
+    level: 17,
+    topic: "WRITING TOOL - GRAMMARLY",
+    description: "AI tool for grammar, spelling, and tone suggestions in real-time writing.",
+    link: "https://www.grammarly.com/",
+    prompt: "Check grammar and clarity for this email."
+  },
+  {
+    type: 5,
+    level: 18,
+    topic: "IMAGE - IMGGOOD",
+    description: "Image enhancement and background removal tool powered by AI.",
+    link: "https://imggood.com/",
+    prompt: "Enhance this blurry image and remove its background."
+  },
+  {
+    type: 5,
+    level: 19,
+    topic: "IMAGE - OPENART",
+    description: "Text-to-image AI tool for generating visual artwork and branding images.",
+    link: "https://openart.ai/",
+    prompt: "Generate an illustration for a tech conference poster."
+  },
+  {
+    type: 5,
+    level: 20,
+    topic: "IMAGE - IDEOGRAM",
+    description: "AI image generator that turns ideas into visual concepts.",
+    link: "https://ideogram.ai/",
+    prompt: "Design a banner image showing futuristic education."
+  },
+  {
+    type: 5,
+    level: 21,
+    topic: "IMAGE - PLAYGROUND",
+    description: "Playground for experimenting with AI-generated images and prompts.",
+    link: "https://playground.com/",
+    prompt: "Create a concept image of a floating AI city."
+  },
+  {
+    type: 6,
+    level: 22,
     topic: "DAILY USE - ELSA",
     description: "AI-powered pronunciation coach to improve spoken English.",
     link: "https://elsaspeak.com/",
-    prompt: "Practice saying 'Can I schedule a meeting?' with American accent.",
+    prompt: "Practice saying 'Can I schedule a meeting?' with American accent."
   },
   {
-    type: 1,
-    level: 14,
+    type: 7,
+    level: 23,
     topic: "SEARCH - PERPLEXITY",
-    description:
-      "AI-powered search assistant that provides cited answers to queries.",
+    description: "AI-powered search assistant that provides cited answers to queries.",
     link: "https://www.perplexity.ai/",
-    prompt: "Research the impact of AI on healthcare.",
+    prompt: "Research the impact of AI on healthcare."
   },
   {
-    type: 1,
-    level: 15,
+    type: 8,
+    level: 24,
     topic: "ML - TEACHABLE MACHINE",
-    description:
-      "Google's tool to train ML models with images, sound, or poses in browser.",
+    description: "Google's tool to train ML models with images, sound, or poses in browser.",
     link: "https://teachablemachine.withgoogle.com/",
-    prompt: "Train a model to recognize three hand gestures.",
+    prompt: "Train a model to recognize three hand gestures."
   },
   {
-    type: 1,
-    level: 16,
+    type: 8,
+    level: 25,
     topic: "ML - HUGGINGFACE",
-    description:
-      "A platform with ML models and datasets, enabling fast experimentation.",
+    description: "A platform with ML models and datasets, enabling fast experimentation.",
     link: "https://huggingface.co/",
-    prompt: "Use a pre-trained sentiment analysis model on a list of tweets.",
+    prompt: "Use a pre-trained sentiment analysis model on a list of tweets."
   },
   {
-    type: 1,
-    level: 17,
+    type: 4,
+    level: 26,
     topic: "WRITING TOOL - CHATSONIC",
-    description:
-      "Chat-based AI assistant that generates responses with internet access.",
+    description: "Chat-based AI assistant that generates responses with internet access.",
     link: "https://writesonic.com/chat",
-    prompt: "Write an article on benefits of renewable energy.",
+    prompt: "Write an article on benefits of renewable energy."
   },
   {
-    type: 1,
-    level: 18,
+    type: 9,
+    level: 27,
     topic: "NOTES PURPOSE - GOOGLE NOTEBOOK LM",
-    description:
-      "AI-powered notebook that helps organize, summarize, and cite documents.",
+    description: "AI-powered notebook that helps organize, summarize, and cite documents.",
     link: "https://notebooklm.google/",
-    prompt: "Summarize this research paper into 5 key points.",
+    prompt: "Summarize this research paper into 5 key points."
   },
   {
-    type: 1,
-    level: 19,
+    type: 9,
+    level: 28,
     topic: "NOTES PURPOSE - PAPERPAL",
-    description:
-      "AI assistant for academic writing, proofreading, and summarizing PDFs.",
+    description: "AI assistant for academic writing, proofreading, and summarizing PDFs.",
     link: "https://paperpal.com/",
-    prompt: "Summarize this uploaded PDF.",
+    prompt: "Summarize this uploaded PDF."
   },
   {
-    type: 1,
-    level: 20,
+    type: 9,
+    level: 29,
     topic: "NOTES PURPOSE - NODEGPT",
     description: "Tool for uploading content and chatting with PDFs or notes.",
-    link: "https://www.nodegpt.com/",
-    prompt: "Extract FAQs from this handbook.",
+    link: "https://notegpt.io/",
+    prompt: "Extract FAQs from this handbook."
   },
   {
-    type: 1,
-    level: 21,
+    type: 9,
+    level: 30,
     topic: "NOTES PURPOSE - GOOGLE AI STUDIO",
     description: "Google's IDE for prototyping AI apps and prompts.",
     link: "https://makersuite.google.com/",
-    prompt: "Create a sentiment classification model.",
+    prompt: "Create a sentiment classification model."
   },
   {
-    type: 1,
-    level: 22,
+    type: 9,
+    level: 31,
     topic: "NOTES PURPOSE - PHIND",
     description: "AI search engine for developers and technical documentation.",
     link: "https://www.phind.com/",
-    prompt: "Summarize the working of JavaScript closures.",
+    prompt: "Summarize the working of JavaScript closures."
   },
   {
-    type: 1,
-    level: 23,
+    type: 9,
+    level: 32,
     topic: "NOTES PURPOSE - ELICIT",
     description: "AI tool for literature review and research synthesis.",
     link: "https://elicit.org/",
-    prompt: "Find studies on AI in mental health treatment.",
+    prompt: "Find studies on AI in mental health treatment."
   },
   {
-    type: 1,
-    level: 24,
-    topic: "DESIGN PURPOSE - CANVA",
-    description:
-      "Graphic design platform with AI-powered design and templates.",
-    link: "https://www.canva.com/",
-    prompt: "Design an Instagram post for product launch.",
-  },
-  {
-    type: 1,
-    level: 25,
-    topic: "DESIGN PURPOSE - MICROSOFT DESIGNER",
-    description:
-      "AI graphic design tool to create social posts and visuals from prompts.",
-    link: "https://designer.microsoft.com/",
-    prompt: "Create a YouTube thumbnail for tech review video.",
-  },
-  {
-    type: 1,
-    level: 26,
-    topic: "PPT - GAMMA",
-    description:
-      "AI tool for generating interactive presentations and documents.",
-    link: "https://gamma.app/",
-    prompt: "Create slides on future of AI in education.",
-  },
-  {
-    type: 1,
-    level: 27,
-    topic: "PPT - GENSPARK",
-    description:
-      "Create presentation slides instantly using AI based on prompt.",
-    link: "https://genspark.app/",
-    prompt: "Make slides explaining Cloud Computing.",
-  },
-  {
-    type: 1,
-    level: 28,
-    topic: "PPT - SLIDESCO",
-    description:
-      "Template platform for Google Slides & PowerPoint with AI search.",
-    link: "https://slidesgo.com/",
-    prompt: "Find templates for startup pitch deck.",
-  },
-  {
-    type: 1,
-    level: 29,
-    topic: "WEBSITE - FRAMER",
-    description:
-      "AI-powered website builder for creating animated, responsive sites.",
-    link: "https://www.framer.com/",
-    prompt: "Build a portfolio website for a UX designer.",
-  },
-  {
-    type: 1,
-    level: 30,
-    topic: "WEBSITE - DORA",
-    description: "Visual design and animation tool for website building.",
-    link: "https://www.dora.run/",
-    prompt: "Create a landing page for a photography studio.",
-  },
-  {
-    type: 1,
-    level: 31,
-    topic: "WEBSITE - SPLINE",
-    description:
-      "3D design tool to create interactive web graphics and animations.",
-    link: "https://spline.design/",
-    prompt: "Make a 3D animation of floating text on homepage.",
-  },
-  {
-    type: 1,
-    level: 32,
-    topic: "TO DOWNLOAD WEBSITE - CLAUDE",
-    description:
-      "Advanced AI assistant for content generation and creative development.",
-    link: "https://claude.ai/",
-    prompt: "Write HTML + CSS for login form.",
-  },
-  {
-    type: 1,
+    type: 10,
     level: 33,
-    topic: "TO DOWNLOAD WEBSITE - LOVABLE",
-    description: "AI website builder for modern portfolio and startup pages.",
-    link: "https://lovable.dev/",
-    prompt: "Generate a tech startup homepage with sections.",
+    topic: "DESIGN PURPOSE - CANVA",
+    description: "Graphic design platform with AI-powered design and templates.",
+    link: "https://www.canva.com/",
+    prompt: "Design an Instagram post for product launch."
   },
   {
-    type: 1,
+    type: 10,
     level: 34,
-    topic: "TO DOWNLOAD WEBSITE - BOLT.NEW",
-    description: "Launch and publish projects quickly with AI-based templates.",
-    link: "https://bolt.new/",
-    prompt: "Generate a startup portfolio website layout.",
+    topic: "DESIGN PURPOSE - MICROSOFT DESIGNER",
+    description: "AI graphic design tool to create social posts and visuals from prompts.",
+    link: "https://designer.microsoft.com/",
+    prompt: "Create a YouTube thumbnail for tech review video."
   },
   {
-    type: 1,
+    type: 11,
     level: 35,
-    topic: "TO DOWNLOAD WEBSITE - TRICKLE.AI",
-    description:
-      "AI-powered note and website organizer to publish personal knowledge.",
-    link: "https://trickle.so/",
-    prompt: "Create a micro-site from these study notes.",
+    topic: "PPT - GAMMA",
+    description: "AI tool for generating interactive presentations and documents.",
+    link: "https://gamma.app/",
+    prompt: "Create slides on future of AI in education."
   },
   {
-    type: 1,
+    type: 11,
     level: 36,
-    topic: "TO DOWNLOAD WEBSITE - REPLIT",
-    description: "Collaborative browser-based IDE with AI tools.",
-    link: "https://replit.com/",
-    prompt: "Build a blog with Python and HTML.",
+    topic: "PPT - GENSPARK",
+    description: "Create presentation slides instantly using AI based on prompt.",
+    link: "https://www.genspark.ai/",
+    prompt: "Make slides explaining Cloud Computing."
   },
   {
-    type: 1,
+    type: 11,
     level: 37,
-    topic: "TO DOWNLOAD WEBSITE - WEBDRAW",
-    description: "No-code website builder with drag-drop design.",
-    link: "https://webdraw.com/",
-    prompt: "Design a job application portal UI.",
+    topic: "PPT - SLIDESCO",
+    description: "Template platform for Google Slides & PowerPoint with AI search.",
+    link: "https://slidesgo.com/",
+    prompt: "Find templates for startup pitch deck."
   },
   {
-    type: 1,
+    type: 12,
     level: 38,
     topic: "USING TERMINAL - CURSOR",
     description: "AI-integrated code editor with terminal support.",
     link: "https://www.cursor.com/",
-    prompt: "Create a CRUD app in Flask using SQLite.",
+    prompt: "Create a CRUD app in Flask using SQLite."
   },
   {
-    type: 1,
+    type: 13,
     level: 39,
-    topic: "MEETING - AUTHOR",
-    description: "AI-based notetaker and meeting summarizer.",
-    link: "https://www.authorea.com/",
-    prompt: "Summarize today's Zoom meeting notes.",
-  },
-  {
-    type: 1,
-    level: 40,
     topic: "ARCHITECTURE DIAGRAM - ERASER.IO",
-    description:
-      "Whiteboard tool for drawing and sharing architecture diagrams.",
+    description: "Whiteboard tool for drawing and sharing architecture diagrams.",
     link: "https://app.eraser.io/",
-    prompt: "Design a microservice architecture for an e-commerce site.",
+    prompt: "Design a microservice architecture for an e-commerce site."
   },
   {
-    type: 1,
-    level: 41,
+    type: 13,
+    level: 40,
     topic: "ARCHITECTURE DIAGRAM - BOARDMIX",
-    description:
-      "Diagram tool for ER models, workflows and collaborative planning.",
+    description: "Diagram tool for ER models, workflows and collaborative planning.",
     link: "https://www.boardmix.com/",
-    prompt: "Create an ER diagram for library system.",
+    prompt: "Create an ER diagram for library system."
   },
   {
-    type: 1,
-    level: 42,
+    type: 14,
+    level: 41,
     topic: "CODING - CHATGPT",
     description: "Chat assistant that helps with coding tasks and concepts.",
     link: "https://chat.openai.com/",
-    prompt: "Explain difference between class and struct in C++.",
+    prompt: "Explain difference between class and struct in C++."
   },
   {
-    type: 1,
-    level: 43,
+    type: 14,
+    level: 42,
     topic: "CODING - CLAUDE",
-    description:
-      "AI chatbot useful for coding, writing, and generating content.",
+    description: "AI chatbot useful for coding, writing, and generating content.",
     link: "https://claude.ai/",
-    prompt: "Write Python code for login system.",
+    prompt: "Write Python code for login system."
   },
   {
-    type: 1,
-    level: 44,
+    type: 14,
+    level: 43,
     topic: "CODING - GEMINI",
     description: "Google AI tool for creative and code assistance.",
     link: "https://gemini.google.com/",
-    prompt: "Explain React hooks with examples.",
+    prompt: "Explain React hooks with examples."
   },
   {
-    type: 1,
-    level: 45,
+    type: 14,
+    level: 44,
     topic: "CODING - BLACKBOX AI",
     description: "Coding assistant offering intelligent code suggestions.",
     link: "https://www.blackbox.ai/",
-    prompt: "Write a merge sort algorithm in Java.",
+    prompt: "Write a merge sort algorithm in Java."
   },
+  {
+    type: 15,
+    level: 45,
+    topic: "RESUME - GORESUME",
+    description: "AI-powered resume builder to create ATS-friendly, professional resumes in minutes.",
+    link: "https://goresume.io/",
+    prompt: "Create a resume for a Computer Science student with internship experience."
+  },
+  {
+    type: 16,
+    level: 46,
+    topic: "BRANDING - BRANDMARK",
+    description: "AI logo and branding generator that designs logos, color palettes, and business assets.",
+    link: "https://app.brandmark.io/",
+    prompt: "Generate a logo and brand kit for a tech startup called 'Fewinfos'."
+  }
+
 ];
 
 // Sample data for events and gallery

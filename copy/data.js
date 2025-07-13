@@ -53,7 +53,7 @@ const aiToolsData = [
   {
     type: 1,
     level: 5,
-    topic: "AI WEBINAR - MONICA",
+    topic: "EXTENSION - MONICA",
     description:
       "AI assistant for summarizing emails, documents, and web pages in Chrome.",
     link: "https://monica.im/",
@@ -62,7 +62,7 @@ const aiToolsData = [
   {
     type: 1,
     level: 6,
-    topic: "AI WEBINAR - TACTIQ",
+    topic: "EXTENSION - TACTIQ",
     description:
       "Meeting summarizer that captures and transcribes Google Meet/Zoom calls.",
     link: "https://tactiq.io/",
@@ -71,11 +71,11 @@ const aiToolsData = [
   {
     type: 1,
     level: 7,
-    topic: "AI WEBINAR - SLIDOR",
+    topic: "EXTENSION - SIDER",
     description:
-      "AI-powered tool for creating professional presentations quickly.",
-    link: "https://www.slidor.com/",
-    prompt: "Generate slides for an AI in Education topic.",
+      "AI-powered Chrome extension with a sidebar that lets you chat with multiple AI models (GPT-4, Claude, Gemini, etc.), generate presentations, summarize content, translate, and interact with files (PDFs, images, audio).",
+    link: "https://sider.ai/",
+    prompt: "Generate slides for the topic 'AI in Education'.",
   },
   {
     type: 1,
@@ -187,7 +187,7 @@ const aiToolsData = [
     level: 20,
     topic: "NOTES PURPOSE - NODEGPT",
     description: "Tool for uploading content and chatting with PDFs or notes.",
-    link: "https://www.nodegpt.com/",
+    link: "https://notegpt.io/",
     prompt: "Extract FAQs from this handbook.",
   },
   {
@@ -247,7 +247,7 @@ const aiToolsData = [
     topic: "PPT - GENSPARK",
     description:
       "Create presentation slides instantly using AI based on prompt.",
-    link: "https://genspark.app/",
+    link: "https://www.genspark.ai/",
     prompt: "Make slides explaining Cloud Computing.",
   },
   {
@@ -343,14 +343,7 @@ const aiToolsData = [
     link: "https://www.cursor.com/",
     prompt: "Create a CRUD app in Flask using SQLite.",
   },
-  {
-    type: 1,
-    level: 39,
-    topic: "MEETING - AUTHOR",
-    description: "AI-based notetaker and meeting summarizer.",
-    link: "https://www.authorea.com/",
-    prompt: "Summarize today's Zoom meeting notes.",
-  },
+ 
   {
     type: 1,
     level: 40,
@@ -402,6 +395,31 @@ const aiToolsData = [
     link: "https://www.blackbox.ai/",
     prompt: "Write a merge sort algorithm in Java.",
   },
+  {
+    type: 1,
+    level: 45,
+    topic: "RESUME - GORESUME",
+    description: "AI-powered resume builder to create ATS-friendly, professional resumes in minutes.",
+    link: "https://goresume.io/",
+    prompt: "Create a resume for a Computer Science student with internship experience."
+  },
+  {
+    type: 1,
+    level: 45,
+    topic: "BRANDING - BRANDMARK",
+    description: "AI logo and branding generator that designs logos, color palettes, and business assets.",
+    link: "https://app.brandmark.io/",
+    prompt: "Generate a logo and brand kit for a tech startup called 'Fewinfos'."
+  },
+  {
+    type: 1,
+    level: 45,
+    topic: "CODING - BLACKBOX AI",
+    description: "Coding assistant offering intelligent code suggestions.",
+    link: "https://www.blackbox.ai/",
+    prompt: "Write a merge sort algorithm in Java."
+  },
+  
 ];
 
 // Sample data for events and gallery
