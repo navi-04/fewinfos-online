@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Tools Workshop - Fewinfos</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(
+          135deg,
+          #f8fafe 0%,
+          #e6f3ff 50%,
+          #d4edff 100%
+        );
+        min-height: 100vh;
+        padding-top: 70px;
+      }
+
+      .ai-tools-header {
+        text-align: center;
+        padding: 40px 0;
+        background: linear-gradient(135deg, #003366 0%, #004a8f 100%);
+        color: white;
+        margin-bottom: 40px;
+      }
+
+      .ai-tools-title {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #fff, #00ccff, #ffd700);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleGlow {
+        0% {
+          filter: brightness(1);
+        }
+        100% {
+          filter: brightness(1.2);
+        }
+      }
+
+      .live-badge-large {
+        background: linear-gradient(45deg, #ff4757, #ff3742);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: inline-block;
+        animation: pulse 2s infinite;
+        box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+        margin-bottom: 1rem;
+      }
+
+      .ai-tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 30px;
+        padding: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .ai-tool-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 16px;
+        border-left: 5px solid var(--primary-color);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 32px rgba(0, 51, 102, 0.1);
+        position: relative;
+        overflow: hidden;
+        animation: cardSlideUp 0.6s ease forwards;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .ai-tool-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(0, 204, 255, 0.05),
+          transparent
+        );
+        opacity: 0;
+        transition: all 0.4s ease;
+        pointer-events: none;
+      }
+
+      .ai-tool-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(0, 51, 102, 0.2);
+        border-left-color: var(--accent-cyan);
+      }
+
+      .ai-tool-card:hover::before {
+        opacity: 1;
+      }
+
+      @keyframes cardSlideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .ai-tool-level {
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ai-tool-level::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .ai-tool-card:hover .ai-tool-level::before {
+        left: 100%;
+      }
+
+      .ai-tool-title {
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        transition: all 0.3s ease;
+      }
+
+      .ai-tool-card:hover .ai-tool-title {
+        background: var(--gradient-primary);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .ai-tool-description {
+        color: var(--text-gray);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .ai-tool-card:hover .ai-tool-description {
+        color: var(--text-dark);
+      }
+
+      .ai-tool-prompt {
+        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 2px solid rgba(0, 204, 255, 0.1);
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        border-left: 4px solid var(--accent-gold);
+        transition: all 0.3s ease;
+      }
+
+      .ai-tool-card:hover .ai-tool-prompt {
+        border-color: rgba(0, 204, 255, 0.3);
+        transform: translateX(5px);
+      }
+
+      .ai-tool-prompt strong {
+        color: var(--primary-color);
+        font-style: normal;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .ai-tool-link {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ai-tool-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .ai-tool-link:hover {
+        background: linear-gradient(135deg, var(--accent-gold), #ffa500);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+      }
+
+      .ai-tool-link:hover::before {
+        left: 100%;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 100px;
+        left: 20px;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+        z-index: 1000;
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 51, 102, 0.4);
+      }
+
+      /* Add staggered animation delays */
+      .ai-tool-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .ai-tool-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .ai-tool-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .ai-tool-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .ai-tool-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .ai-tool-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .ai-tool-card:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+      .ai-tool-card:nth-child(8) {
+        animation-delay: 0.8s;
+      }
+      .ai-tool-card:nth-child(9) {
+        animation-delay: 0.9s;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .ai-tools-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 10px;
+        }
+
+        .ai-tools-title {
+          font-size: 2rem;
+        }
+
+        .back-btn {
+          position: static;
+          margin: 20px;
+          display: inline-block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <h2>Fewinfos</h2>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="join-btn">Join Us</button>
+      </div>
+    </header>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="history.back()">
+      <i class="fas fa-arrow-left"></i> Back to Events
+    </button>
+
+    <!-- AI Tools Header -->
+    <div class="ai-tools-header">
+      <div class="container">
+        <div class="live-badge-large">🔴 LIVE EVENT - July 13, 2025</div>
+        <h1 class="ai-tools-title">🤖 AI Tools Workshop</h1>
+        <p
+          style="
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+          "
+        >
+          Master <strong id="toolsCount">46</strong> cutting-edge AI tools in
+          this comprehensive workshop. Each tool includes detailed descriptions,
+          sample prompts, and direct access links.
+        </p>
+        <div style="margin-top: 2rem; font-size: 1.1rem">
+          🎯 <strong>Workshop Price:</strong> ₹999 | 📅
+          <strong>Duration:</strong> 6 hours | 👨‍🏫
+          <strong>Instructor:</strong> AI Expert Team
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Tools Grid -->
+    <div class="container">
+      <div class="ai-tools-grid" id="aiToolsGrid">
+        <!-- AI tools will be populated here -->
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="data.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize AOS
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100,
+        });
+
+        // Populate AI tools
+        populateAITools();
+      });
+
+      function populateAITools() {
+        const toolsGrid = document.getElementById("aiToolsGrid");
+        const toolsCountElement = document.getElementById("toolsCount");
+
+        if (!aiToolsData || aiToolsData.length === 0) {
+          toolsGrid.innerHTML =
+            '<p style="text-align: center; color: #666;">No AI tools data available.</p>';
+          return;
+        }
+
+        toolsCountElement.textContent = aiToolsData.length;
+
+        aiToolsData.forEach((tool, index) => {
+          const toolCard = document.createElement("div");
+          toolCard.className = "ai-tool-card";
+          toolCard.style.animationDelay = `${(index % 9) * 0.1}s`;
+
+          if (tool.type === 2) {
+            // Type 2 tools (content only)
+            toolCard.innerHTML = `
+                        <span class="ai-tool-level">Level ${tool.level}</span>
+                        <h4 class="ai-tool-title">${tool.topic}</h4>
+                        <p class="ai-tool-description">${tool.content}</p>
+                        <div style="background: #e3f2fd; color: #1976d2; padding: 8px 15px; border-radius: 12px; font-size: 0.9rem; font-weight: 500; display: inline-block; margin-top: 1rem;">
+                            📝 Information Tool
+                        </div>
+                    `;
+          } else {
+            // Type 1 tools (with links and prompts)
+            toolCard.innerHTML = `
+                        <span class="ai-tool-level">Level ${tool.level}</span>
+                        <h4 class="ai-tool-title">${tool.topic}</h4>
+                        <p class="ai-tool-description">${tool.description}</p>
+                        ${
+                          tool.prompt
+                            ? `
+                            <div class="ai-tool-prompt">
+                                <strong>💡 Sample Prompt:</strong>
+                                <em>"${tool.prompt}"</em>
+                            </div>
+                        `
+                            : ""
+                        }
+                        ${
+                          tool.link
+                            ? `
+                            <div style="text-align: center; margin-top: 1rem;">
+                                <a href="${tool.link}" target="_blank" class="ai-tool-link">
+                                    🚀 Try Now <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        `
+                            : ""
+                        }
+                    `;
+          }
+
+          toolsGrid.appendChild(toolCard);
+        });
+      }
+    </script>
+  </body>
+</html>
