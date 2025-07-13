@@ -398,9 +398,9 @@ body {
   opacity: 1;
 }
 
-/* Floating animation for live events */
+/* Floating animation for live events - REMOVED */
 .event-card[data-status="live"] {
-  animation: cardSlideIn 0.6s ease forwards, float 3s ease-in-out infinite;
+  animation: cardSlideIn 0.6s ease forwards;
 }
 
 @keyframes float {
