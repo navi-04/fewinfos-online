@@ -21,7 +21,10 @@ window.addEventListener("scroll", function () {
 });
 
 // Events page functionality
-if (document.getElementById("eventsGrid")) {
+if (
+  document.getElementById("eventsGrid") ||
+  document.getElementById("live-events")
+) {
   let currentFilter = "all";
 
   function renderEvents(filter = "all") {
@@ -34,15 +37,16 @@ if (document.getElementById("eventsGrid")) {
       filteredEvents = eventsData.filter((event) => !isUpcoming(event.date));
     }
 
-    eventsGrid.innerHTML = "";
+    if (eventsGrid) {
+      eventsGrid.innerHTML = "";
 
-    filteredEvents.forEach((event, index) => {
-      const eventCard = document.createElement("div");
-      eventCard.className = "event-card";
-      eventCard.setAttribute("data-aos", "fade-up");
-      eventCard.setAttribute("data-aos-delay", (index * 100).toString());
+      filteredEvents.forEach((event, index) => {
+        const eventCard = document.createElement("div");
+        eventCard.className = "event-card";
+        eventCard.setAttribute("data-aos", "fade-up");
+        eventCard.setAttribute("data-aos-delay", (index * 100).toString());
 
-      eventCard.innerHTML = `
+        eventCard.innerHTML = `
                 <h3 class="event-title">${event.title}</h3>
                 <p class="event-date">${formatDate(event.date)}</p>
                 <p class="event-location"><i class="fas fa-map-marker-alt"></i> ${
@@ -62,19 +66,20 @@ if (document.getElementById("eventsGrid")) {
                 <button class="register-btn" onclick="handleRegistration(${
                   event.id
                 })">${
-        event.isProtected
-          ? "🔐 Access Archive (Password Required)"
-          : isUpcoming(event.date)
-          ? "Register Now"
-          : "View Details"
-      }</button>
+          event.isProtected
+            ? "🔐 Access Archive (Password Required)"
+            : isUpcoming(event.date)
+            ? "Register Now"
+            : "View Details"
+        }</button>
             `;
 
-      eventsGrid.appendChild(eventCard);
-    });
+        eventsGrid.appendChild(eventCard);
+      });
 
-    // Refresh AOS after dynamic content
-    AOS.refresh();
+      // Refresh AOS after dynamic content
+      AOS.refresh();
+    }
   }
 
   // Filter button functionality
@@ -659,5 +664,247 @@ document.addEventListener("mouseleave", function () {
   const cards = document.querySelectorAll(".event-card, .gallery-item");
   cards.forEach((card) => {
     card.style.transform = "";
+  });
+});
+
+// Tab functionality - Updated for events.html compatibility
+document.addEventListener("DOMContentLoaded", function () {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  // Tab switching functionality
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetTab = button.getAttribute("data-tab");
+
+      // Remove active class from all tabs and contents
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      tabContents.forEach((content) => content.classList.remove("active"));
+
+      // Add active class to clicked tab and corresponding content
+      button.classList.add("active");
+      const targetContent = document.getElementById(targetTab + "-tab");
+      if (targetContent) {
+        targetContent.classList.add("active");
+      }
+
+      // Populate events based on selected tab
+      populateEvents(targetTab);
+    });
+  });
+
+  // Initialize with live events if we have tabs, otherwise use regular events page
+  if (tabButtons.length > 0) {
+    populateEvents("live");
+  } else if (document.getElementById("eventsGrid")) {
+    // This is the old events page, initialize with all events
+    renderEvents();
+  }
+
+  // Initialize AOS if available
+  if (typeof AOS !== "undefined") {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }
+});
+
+// Function to populate events based on tab
+function populateEvents(tabType) {
+  const container = document.getElementById(tabType + "-events");
+  if (!container) return;
+
+  // Clear existing content
+  container.innerHTML = "";
+
+  // Get events based on type
+  let events = [];
+
+  if (typeof eventsData !== "undefined") {
+    switch (tabType) {
+      case "live":
+        events = eventsData.filter((event) => event.status === "live");
+        break;
+      case "upcoming":
+        events = eventsData.filter((event) => event.status === "upcoming");
+        break;
+      case "completed":
+        events = eventsData.filter((event) => event.status === "completed");
+        break;
+      case "all":
+      default:
+        events = eventsData;
+        break;
+    }
+  } else {
+    // Fallback sample data if eventsData is not available
+    events = getSampleEvents(tabType);
+  }
+
+  if (events.length === 0) {
+    showEmptyState(container, tabType);
+    return;
+  }
+
+  // Create event cards
+  events.forEach((event, index) => {
+    const eventCard = createEventCard(event, index);
+    container.appendChild(eventCard);
+  });
+}
+
+// Function to create event card
+function createEventCard(event, index) {
+  const card = document.createElement("div");
+  card.className = "event-card";
+  card.style.animationDelay = `${index * 0.1}s`;
+
+  const statusClass = event.status || "upcoming";
+  const statusText = statusClass.charAt(0).toUpperCase() + statusClass.slice(1);
+
+  // Create action button based on event type
+  let actionButton = "";
+  if (event.isProtected) {
+    actionButton = `<button class="workshop-btn" onclick="handleRegistration(${event.id})">🔐 Access Workshop</button>`;
+  } else if (event.link) {
+    actionButton = `<button class="workshop-btn" onclick="window.open('${event.link}', '_blank')">Join Event</button>`;
+  } else {
+    actionButton = `<button class="workshop-btn" onclick="handleRegistration(${
+      event.id
+    })">
+      ${statusClass === "upcoming" ? "Register Now" : "View Details"}
+    </button>`;
+  }
+
+  card.innerHTML = `
+        ${
+          event.image
+            ? `<img src="${event.image}" alt="${event.title}" class="event-image">`
+            : ""
+        }
+        <div class="event-info">
+            <h3 class="event-title">${event.title}</h3>
+            <p class="event-description">${
+              event.description || "Join us for an amazing event experience."
+            }</p>
+            ${
+              event.isProtected
+                ? `
+              <div class="ai-tools-preview">
+                <h4>🤖 AI Tools Archive <span class="tools-count">${
+                  event.toolsCount || 46
+                } Tools</span></h4>
+                <p>Access exclusive AI tools showcase from this premium event</p>
+              </div>
+            `
+                : ""
+            }
+            <div class="event-meta">
+                <span class="event-date">
+                    <i class="fas fa-calendar-alt"></i> ${event.date || "TBA"}
+                </span>
+                <span class="event-status ${statusClass}">${statusText}</span>
+            </div>
+            ${actionButton}
+        </div>
+    `;
+
+  return card;
+}
+
+// Function to show empty state
+function showEmptyState(container, tabType) {
+  const emptyState = document.createElement("div");
+  emptyState.className = "empty-state";
+
+  let icon, title, message;
+
+  switch (tabType) {
+    case "live":
+      icon = "fas fa-broadcast-tower";
+      title = "No Live Events";
+      message =
+        "There are currently no live events. Check back soon for exciting workshops and sessions!";
+      break;
+    case "upcoming":
+      icon = "fas fa-calendar-plus";
+      title = "No Upcoming Events";
+      message =
+        "Stay tuned! We're planning amazing events that will be announced soon.";
+      break;
+    case "completed":
+      icon = "fas fa-check-circle";
+      title = "No Completed Events";
+      message =
+        "Our event history will appear here once we've hosted some amazing sessions.";
+      break;
+    default:
+      icon = "fas fa-calendar-alt";
+      title = "No Events Found";
+      message =
+        "We're working on bringing you exciting events. Check back soon!";
+  }
+
+  emptyState.innerHTML = `
+        <i class="${icon}"></i>
+        <h3>${title}</h3>
+        <p>${message}</p>
+    `;
+
+  container.appendChild(emptyState);
+}
+
+// Sample data function (fallback)
+function getSampleEvents(tabType) {
+  const sampleEvents = [
+    {
+      title: "AI Workshop Series",
+      description:
+        "Learn the fundamentals of artificial intelligence and machine learning.",
+      date: "Dec 15, 2024",
+      status: "live",
+      image:
+        "https://via.placeholder.com/400x220/003366/ffffff?text=AI+Workshop",
+      link: "AI TOOL WORKSHOP/index.html",
+    },
+    {
+      title: "Web Development Bootcamp",
+      description:
+        "Master modern web development with React, Node.js, and more.",
+      date: "Dec 20, 2024",
+      status: "upcoming",
+      image:
+        "https://via.placeholder.com/400x220/004a8f/ffffff?text=Web+Dev+Bootcamp",
+    },
+    {
+      title: "Cybersecurity Seminar",
+      description:
+        "Learn about the latest security threats and protection strategies.",
+      date: "Nov 30, 2024",
+      status: "completed",
+      image:
+        "https://via.placeholder.com/400x220/00ccff/003366?text=Cybersecurity",
+    },
+  ];
+
+  return sampleEvents.filter((event) => {
+    if (tabType === "all") return true;
+    return event.status === tabType;
+  });
+}
+
+// Add smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   });
 });

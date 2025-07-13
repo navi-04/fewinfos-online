@@ -413,7 +413,7 @@ const eventsData = [
     location: "Online Event (Zoom)",
     description:
       "Master 46 cutting-edge AI tools for video editing, coding, website building, design, and productivity. From VEED to Cursor, learn hands-on techniques across video creation, AI webinars, image generation, and development tools. Includes live demos, practical exercises, and exclusive prompts.",
-    status: "upcoming",
+    status: "live",
     category: "workshop",
     isProtected: true,
     passcode: "FIW123",
