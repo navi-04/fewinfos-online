@@ -2,407 +2,9 @@
 const sitePasscode = "FIW123";
 
 // AI Tools Workshop Data
-const aiToolsData = [
-  {
-    type: 1,
-    level: 0,
-    topic: "VIDEO - VEED",
-    description:
-      "An online video editing tool with AI features for subtitles, noise removal, and more.",
-    link: "https://www.veed.io/",
-    prompt:
-      "Create a promotional video with subtitles and background music using AI.",
-  },
-  {
-    type: 1,
-    level: 1,
-    topic: "VIDEO - PIXVERSE",
-    description:
-      "Convert a single image into animated video clips using AI-powered motion synthesis.",
-    link: "https://www.pixverse.ai/",
-    prompt: "Animate a portrait photo into a realistic head-turning video.",
-  },
-  {
-    type: 1,
-    level: 2,
-    topic: "VIDEO - HEYGEN",
-    description:
-      "Create talking avatar videos using AI from text input and static images.",
-    link: "https://www.heygen.com/",
-    prompt: "Generate an avatar that introduces my company using the script.",
-  },
-  {
-    type: 1,
-    level: 3,
-    topic: "VIDEO - ELEVENLABS",
-    description:
-      "AI voice generator that creates realistic voiceovers using text input.",
-    link: "https://www.elevenlabs.io/",
-    prompt:
-      "Generate a voiceover in a calm male voice saying a 1-minute welcome speech.",
-  },
-  {
-    type: 1,
-    level: 4,
-    topic: "AGENT - TASKADE",
-    description:
-      "Collaborative task manager with AI agents for task generation and automation.",
-    link: "https://www.taskade.com/",
-    prompt: "Create a weekly task planner for a web development project.",
-  },
-  {
-    type: 1,
-    level: 5,
-    topic: "AI WEBINAR - MONICA",
-    description:
-      "AI assistant for summarizing emails, documents, and web pages in Chrome.",
-    link: "https://monica.im/",
-    prompt: "Summarize this PDF into key bullet points.",
-  },
-  {
-    type: 1,
-    level: 6,
-    topic: "AI WEBINAR - TACTIQ",
-    description:
-      "Meeting summarizer that captures and transcribes Google Meet/Zoom calls.",
-    link: "https://tactiq.io/",
-    prompt: "Summarize the meeting into key takeaways.",
-  },
-  {
-    type: 1,
-    level: 7,
-    topic: "AI WEBINAR - SLIDOR",
-    description:
-      "AI-powered tool for creating professional presentations quickly.",
-    link: "https://www.slidor.com/",
-    prompt: "Generate slides for an AI in Education topic.",
-  },
-  {
-    type: 1,
-    level: 8,
-    topic: "AI WEBINAR - GRAMMARLY",
-    description:
-      "AI tool for grammar, spelling, and tone suggestions in real-time writing.",
-    link: "https://www.grammarly.com/",
-    prompt: "Check grammar and clarity for this email.",
-  },
-  {
-    type: 1,
-    level: 9,
-    topic: "IMAGE - IMGGOOD",
-    description: "Image enhancement and background removal tool powered by AI.",
-    link: "https://imggood.com/",
-    prompt: "Enhance this blurry image and remove its background.",
-  },
-  {
-    type: 1,
-    level: 10,
-    topic: "IMAGE - OPENART",
-    description:
-      "Text-to-image AI tool for generating visual artwork and branding images.",
-    link: "https://openart.ai/",
-    prompt: "Generate an illustration for a tech conference poster.",
-  },
-  {
-    type: 1,
-    level: 11,
-    topic: "IMAGE - IDEOGRAM",
-    description: "AI image generator that turns ideas into visual concepts.",
-    link: "https://ideogram.ai/",
-    prompt: "Design a banner image showing futuristic education.",
-  },
-  {
-    type: 1,
-    level: 12,
-    topic: "IMAGE - PLAYGROUND",
-    description:
-      "Playground for experimenting with AI-generated images and prompts.",
-    link: "https://playground.com/",
-    prompt: "Create a concept image of a floating AI city.",
-  },
-  {
-    type: 1,
-    level: 13,
-    topic: "DAILY USE - ELSA",
-    description: "AI-powered pronunciation coach to improve spoken English.",
-    link: "https://elsaspeak.com/",
-    prompt: "Practice saying 'Can I schedule a meeting?' with American accent.",
-  },
-  {
-    type: 1,
-    level: 14,
-    topic: "SEARCH - PERPLEXITY",
-    description:
-      "AI-powered search assistant that provides cited answers to queries.",
-    link: "https://www.perplexity.ai/",
-    prompt: "Research the impact of AI on healthcare.",
-  },
-  {
-    type: 1,
-    level: 15,
-    topic: "ML - TEACHABLE MACHINE",
-    description:
-      "Google's tool to train ML models with images, sound, or poses in browser.",
-    link: "https://teachablemachine.withgoogle.com/",
-    prompt: "Train a model to recognize three hand gestures.",
-  },
-  {
-    type: 1,
-    level: 16,
-    topic: "ML - HUGGINGFACE",
-    description:
-      "A platform with ML models and datasets, enabling fast experimentation.",
-    link: "https://huggingface.co/",
-    prompt: "Use a pre-trained sentiment analysis model on a list of tweets.",
-  },
-  {
-    type: 1,
-    level: 17,
-    topic: "WRITING TOOL - CHATSONIC",
-    description:
-      "Chat-based AI assistant that generates responses with internet access.",
-    link: "https://writesonic.com/chat",
-    prompt: "Write an article on benefits of renewable energy.",
-  },
-  {
-    type: 1,
-    level: 18,
-    topic: "NOTES PURPOSE - GOOGLE NOTEBOOK LM",
-    description:
-      "AI-powered notebook that helps organize, summarize, and cite documents.",
-    link: "https://notebooklm.google/",
-    prompt: "Summarize this research paper into 5 key points.",
-  },
-  {
-    type: 1,
-    level: 19,
-    topic: "NOTES PURPOSE - PAPERPAL",
-    description:
-      "AI assistant for academic writing, proofreading, and summarizing PDFs.",
-    link: "https://paperpal.com/",
-    prompt: "Summarize this uploaded PDF.",
-  },
-  {
-    type: 1,
-    level: 20,
-    topic: "NOTES PURPOSE - NODEGPT",
-    description: "Tool for uploading content and chatting with PDFs or notes.",
-    link: "https://www.nodegpt.com/",
-    prompt: "Extract FAQs from this handbook.",
-  },
-  {
-    type: 1,
-    level: 21,
-    topic: "NOTES PURPOSE - GOOGLE AI STUDIO",
-    description: "Google's IDE for prototyping AI apps and prompts.",
-    link: "https://makersuite.google.com/",
-    prompt: "Create a sentiment classification model.",
-  },
-  {
-    type: 1,
-    level: 22,
-    topic: "NOTES PURPOSE - PHIND",
-    description: "AI search engine for developers and technical documentation.",
-    link: "https://www.phind.com/",
-    prompt: "Summarize the working of JavaScript closures.",
-  },
-  {
-    type: 1,
-    level: 23,
-    topic: "NOTES PURPOSE - ELICIT",
-    description: "AI tool for literature review and research synthesis.",
-    link: "https://elicit.org/",
-    prompt: "Find studies on AI in mental health treatment.",
-  },
-  {
-    type: 1,
-    level: 24,
-    topic: "DESIGN PURPOSE - CANVA",
-    description:
-      "Graphic design platform with AI-powered design and templates.",
-    link: "https://www.canva.com/",
-    prompt: "Design an Instagram post for product launch.",
-  },
-  {
-    type: 1,
-    level: 25,
-    topic: "DESIGN PURPOSE - MICROSOFT DESIGNER",
-    description:
-      "AI graphic design tool to create social posts and visuals from prompts.",
-    link: "https://designer.microsoft.com/",
-    prompt: "Create a YouTube thumbnail for tech review video.",
-  },
-  {
-    type: 1,
-    level: 26,
-    topic: "PPT - GAMMA",
-    description:
-      "AI tool for generating interactive presentations and documents.",
-    link: "https://gamma.app/",
-    prompt: "Create slides on future of AI in education.",
-  },
-  {
-    type: 1,
-    level: 27,
-    topic: "PPT - GENSPARK",
-    description:
-      "Create presentation slides instantly using AI based on prompt.",
-    link: "https://genspark.app/",
-    prompt: "Make slides explaining Cloud Computing.",
-  },
-  {
-    type: 1,
-    level: 28,
-    topic: "PPT - SLIDESCO",
-    description:
-      "Template platform for Google Slides & PowerPoint with AI search.",
-    link: "https://slidesgo.com/",
-    prompt: "Find templates for startup pitch deck.",
-  },
-  {
-    type: 1,
-    level: 29,
-    topic: "WEBSITE - FRAMER",
-    description:
-      "AI-powered website builder for creating animated, responsive sites.",
-    link: "https://www.framer.com/",
-    prompt: "Build a portfolio website for a UX designer.",
-  },
-  {
-    type: 1,
-    level: 30,
-    topic: "WEBSITE - DORA",
-    description: "Visual design and animation tool for website building.",
-    link: "https://www.dora.run/",
-    prompt: "Create a landing page for a photography studio.",
-  },
-  {
-    type: 1,
-    level: 31,
-    topic: "WEBSITE - SPLINE",
-    description:
-      "3D design tool to create interactive web graphics and animations.",
-    link: "https://spline.design/",
-    prompt: "Make a 3D animation of floating text on homepage.",
-  },
-  {
-    type: 1,
-    level: 32,
-    topic: "TO DOWNLOAD WEBSITE - CLAUDE",
-    description:
-      "Advanced AI assistant for content generation and creative development.",
-    link: "https://claude.ai/",
-    prompt: "Write HTML + CSS for login form.",
-  },
-  {
-    type: 1,
-    level: 33,
-    topic: "TO DOWNLOAD WEBSITE - LOVABLE",
-    description: "AI website builder for modern portfolio and startup pages.",
-    link: "https://lovable.dev/",
-    prompt: "Generate a tech startup homepage with sections.",
-  },
-  {
-    type: 1,
-    level: 34,
-    topic: "TO DOWNLOAD WEBSITE - BOLT.NEW",
-    description: "Launch and publish projects quickly with AI-based templates.",
-    link: "https://bolt.new/",
-    prompt: "Generate a startup portfolio website layout.",
-  },
-  {
-    type: 1,
-    level: 35,
-    topic: "TO DOWNLOAD WEBSITE - TRICKLE.AI",
-    description:
-      "AI-powered note and website organizer to publish personal knowledge.",
-    link: "https://trickle.so/",
-    prompt: "Create a micro-site from these study notes.",
-  },
-  {
-    type: 1,
-    level: 36,
-    topic: "TO DOWNLOAD WEBSITE - REPLIT",
-    description: "Collaborative browser-based IDE with AI tools.",
-    link: "https://replit.com/",
-    prompt: "Build a blog with Python and HTML.",
-  },
-  {
-    type: 1,
-    level: 37,
-    topic: "TO DOWNLOAD WEBSITE - WEBDRAW",
-    description: "No-code website builder with drag-drop design.",
-    link: "https://webdraw.com/",
-    prompt: "Design a job application portal UI.",
-  },
-  {
-    type: 1,
-    level: 38,
-    topic: "USING TERMINAL - CURSOR",
-    description: "AI-integrated code editor with terminal support.",
-    link: "https://www.cursor.com/",
-    prompt: "Create a CRUD app in Flask using SQLite.",
-  },
-  {
-    type: 1,
-    level: 39,
-    topic: "MEETING - AUTHOR",
-    description: "AI-based notetaker and meeting summarizer.",
-    link: "https://www.authorea.com/",
-    prompt: "Summarize today's Zoom meeting notes.",
-  },
-  {
-    type: 1,
-    level: 40,
-    topic: "ARCHITECTURE DIAGRAM - ERASER.IO",
-    description:
-      "Whiteboard tool for drawing and sharing architecture diagrams.",
-    link: "https://app.eraser.io/",
-    prompt: "Design a microservice architecture for an e-commerce site.",
-  },
-  {
-    type: 1,
-    level: 41,
-    topic: "ARCHITECTURE DIAGRAM - BOARDMIX",
-    description:
-      "Diagram tool for ER models, workflows and collaborative planning.",
-    link: "https://www.boardmix.com/",
-    prompt: "Create an ER diagram for library system.",
-  },
-  {
-    type: 1,
-    level: 42,
-    topic: "CODING - CHATGPT",
-    description: "Chat assistant that helps with coding tasks and concepts.",
-    link: "https://chat.openai.com/",
-    prompt: "Explain difference between class and struct in C++.",
-  },
-  {
-    type: 1,
-    level: 43,
-    topic: "CODING - CLAUDE",
-    description:
-      "AI chatbot useful for coding, writing, and generating content.",
-    link: "https://claude.ai/",
-    prompt: "Write Python code for login system.",
-  },
-  {
-    type: 1,
-    level: 44,
-    topic: "CODING - GEMINI",
-    description: "Google AI tool for creative and code assistance.",
-    link: "https://gemini.google.com/",
-    prompt: "Explain React hooks with examples.",
-  },
-  {
-    type: 1,
-    level: 45,
-    topic: "CODING - BLACKBOX AI",
-    description: "Coding assistant offering intelligent code suggestions.",
-    link: "https://www.blackbox.ai/",
-    prompt: "Write a merge sort algorithm in Java.",
-  },
-];
+const aiToolsData = [];
+
+
 
 // Sample data for events and gallery
 const eventsData = [
@@ -501,6 +103,42 @@ const eventsData = [
     status: "completed",
     category: "webinar",
   },
+  {
+    id: 9,
+    title: "Advanced AI Prompt Engineering Masterclass",
+    date: "2025-07-13",
+    location: "Online Event (Microsoft Teams)",
+    description:
+      "Become an expert in crafting effective prompts for 32 popular AI models including GPT-4, Claude, Midjourney, and DALL-E 3. Learn advanced techniques for context management, chain-of-thought reasoning, and specialized outputs across text, code, and image generation. Includes personalized feedback, optimization strategies, and industry-specific templates.",
+    status: "live",
+    category: "workshop",
+    isProtected: true,
+    passcode: "FIW245",
+    duration: "3 hours",
+    instructor: "Dr. Maya Rodriguez",
+    price: "₹149",
+    tags: ["AI", "Prompt Engineering", "Online", "GPT", "Workshop"],
+    toolsCount: 32,
+    aiToolsData: aiToolsData,
+},
+{
+    id: 10,
+    title: "AI for Business Analytics Bootcamp",
+    date: "2025-097-13",
+    location: "Online Event (Zoom)",
+    description:
+      "Transform your business data into actionable insights with 28 cutting-edge AI analytics tools. From predictive modeling to automated reporting, learn how to implement AI-powered dashboards, natural language querying, and anomaly detection systems. Features hands-on sessions with real business datasets, ROI calculation frameworks, and integration strategies for popular business intelligence platforms.",
+    status: "live",
+    category: "bootcamp",
+    isProtected: true,
+    passcode: "FIW367",
+    duration: "4 hours (2 sessions)",
+    instructor: "Business Intelligence Team",
+    price: "₹199",
+    tags: ["AI", "Business Analytics", "Data", "Online", "Bootcamp"],
+    toolsCount: 28,
+    aiToolsData: aiToolsData,
+},
 ];
 
 const galleryData = [
