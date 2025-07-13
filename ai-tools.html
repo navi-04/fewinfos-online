@@ -348,30 +348,89 @@
     <!-- AI Tools Header -->
     <div class="ai-tools-header">
       <div class="container">
-        <div class="live-badge-large">🔴 LIVE EVENT - July 13, 2025</div>
-        <h1 class="ai-tools-title">🤖 AI Tools Workshop</h1>
+        <div class="live-badge-large">🔴 LIVE NOW - AI Tools Workshop</div>
+        <h1 class="ai-tools-title">🤖 Live AI Tools Workshop</h1>
         <p
           style="
             font-size: 1.2rem;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
+            line-height: 1.6;
           "
         >
-          Master <strong id="toolsCount">46</strong> cutting-edge AI tools in
-          this comprehensive workshop. Each tool includes detailed descriptions,
-          sample prompts, and direct access links.
+          🎉 <strong>Welcome to the Live Session!</strong> You now have
+          exclusive access to <strong id="toolsCount">46</strong> premium AI
+          tools. Each tool includes real-time demonstrations, sample prompts,
+          and direct access links.
         </p>
-        <div style="margin-top: 2rem; font-size: 1.1rem">
-          🎯 <strong>Workshop Price:</strong> ₹999 | 📅
-          <strong>Duration:</strong> 6 hours | 👨‍🏫
-          <strong>Instructor:</strong> AI Expert Team
+        <div
+          style="
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+          "
+        >
+          🔴 <strong>LIVE:</strong> July 13, 2025 | ⏰
+          <strong>Duration:</strong> 6 hours | 👥
+          <strong>Participants:</strong> <span id="liveCount">247</span> active
+          | 💰 <strong>Value:</strong> ₹1999 (You saved ₹1000!)
+        </div>
+        <div style="margin-top: 1rem; font-size: 1rem; opacity: 0.8">
+          🎯 Interactive session with Q&A • 📝 Take notes • 🚀 Try tools in
+          real-time
         </div>
       </div>
     </div>
 
     <!-- AI Tools Grid -->
     <div class="container">
+      <!-- Live Session Status Bar -->
+      <div
+        style="
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          border-radius: 15px;
+          padding: 20px;
+          margin-bottom: 30px;
+          border-left: 5px solid #ff4757;
+          box-shadow: 0 8px 32px rgba(0, 51, 102, 0.1);
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 10px">
+            <div
+              style="
+                width: 12px;
+                height: 12px;
+                background: #ff4757;
+                border-radius: 50%;
+                animation: pulse 1.5s infinite;
+              "
+            ></div>
+            <strong style="color: #003366">🔴 LIVE SESSION ACTIVE</strong>
+          </div>
+          <div style="font-size: 0.9rem; color: #666">
+            👥 <span id="liveParticipants">247</span> participants • 💬 Chat
+            available • 🎥 Recording for later access
+          </div>
+        </div>
+        <div style="margin-top: 15px; font-size: 0.95rem; color: #003366">
+          🎯 <strong>Next up:</strong> Advanced Coding Tools (in 15 minutes) •
+          📋 <strong>Current:</strong> Video Creation & Editing Tools
+        </div>
+      </div>
+
       <div class="ai-tools-grid" id="aiToolsGrid">
         <!-- AI tools will be populated here -->
       </div>
@@ -390,6 +449,9 @@
 
         // Populate AI tools
         populateAITools();
+
+        // Start live session features
+        startLiveSession();
       });
 
       function populateAITools() {
@@ -422,14 +484,16 @@
           } else {
             // Type 1 tools (with links and prompts)
             toolCard.innerHTML = `
-                        <span class="ai-tool-level">Level ${tool.level}</span>
+                        <span class="ai-tool-level">Level ${
+                          tool.level
+                        } 🔴</span>
                         <h4 class="ai-tool-title">${tool.topic}</h4>
                         <p class="ai-tool-description">${tool.description}</p>
                         ${
                           tool.prompt
                             ? `
                             <div class="ai-tool-prompt">
-                                <strong>💡 Sample Prompt:</strong>
+                                <strong>💡 Live Demo Prompt:</strong>
                                 <em>"${tool.prompt}"</em>
                             </div>
                         `
@@ -440,7 +504,7 @@
                             ? `
                             <div style="text-align: center; margin-top: 1rem;">
                                 <a href="${tool.link}" target="_blank" class="ai-tool-link">
-                                    🚀 Try Now <i class="fas fa-external-link-alt"></i>
+                                    🚀 Try Live Now <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
                         `
@@ -452,6 +516,142 @@
           toolsGrid.appendChild(toolCard);
         });
       }
+
+      function startLiveSession() {
+        // Animate participant count
+        const participantElements = document.querySelectorAll(
+          "#liveParticipants, #liveCount"
+        );
+        let count = 247;
+
+        setInterval(() => {
+          // Random fluctuation in participant count (+/- 1-3)
+          const change = Math.floor(Math.random() * 7) - 3; // -3 to +3
+          count = Math.max(200, Math.min(300, count + change)); // Keep between 200-300
+
+          participantElements.forEach((el) => {
+            if (el) el.textContent = count;
+          });
+        }, 3000); // Update every 3 seconds
+
+        // Add live notification after 10 seconds
+        setTimeout(() => {
+          showLiveNotification();
+        }, 10000);
+
+        // Show tool highlight every 30 seconds
+        setInterval(() => {
+          highlightRandomTool();
+        }, 30000);
+      }
+
+      function showLiveNotification() {
+        const notification = document.createElement("div");
+        notification.style.cssText = `
+          position: fixed;
+          top: 120px;
+          right: 20px;
+          background: linear-gradient(135deg, #ff4757, #ff3742);
+          color: white;
+          padding: 15px 20px;
+          border-radius: 15px;
+          box-shadow: 0 8px 25px rgba(255,71,87,0.4);
+          z-index: 1000;
+          animation: slideInRight 0.5s ease, pulse 2s infinite;
+          max-width: 300px;
+          font-size: 0.9rem;
+        `;
+        notification.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 8px; height: 8px; background: white; border-radius: 50%; animation: pulse 1s infinite;"></div>
+            <strong>Live Update!</strong>
+          </div>
+          <div style="margin-top: 5px; font-size: 0.85rem;">
+            New participant joined! 🎉<br>
+            Total: <span id="notifCount">${
+              Math.floor(Math.random() * 20) + 240
+            }</span> active learners
+          </div>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Remove after 5 seconds
+        setTimeout(() => {
+          notification.style.animation = "slideOutRight 0.5s ease forwards";
+          setTimeout(() => {
+            if (document.body.contains(notification)) {
+              document.body.removeChild(notification);
+            }
+          }, 500);
+        }, 5000);
+      }
+
+      function highlightRandomTool() {
+        const toolCards = document.querySelectorAll(".ai-tool-card");
+        if (toolCards.length === 0) return;
+
+        const randomCard =
+          toolCards[Math.floor(Math.random() * toolCards.length)];
+
+        // Add highlight effect
+        const originalStyle = randomCard.style.transform;
+        randomCard.style.transform = "scale(1.05)";
+        randomCard.style.boxShadow = "0 25px 70px rgba(255,71,87,0.3)";
+        randomCard.style.borderLeftColor = "#ff4757";
+
+        // Add "Now Presenting" badge
+        const badge = document.createElement("div");
+        badge.style.cssText = `
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          background: #ff4757;
+          color: white;
+          padding: 5px 10px;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          z-index: 10;
+          animation: pulse 2s infinite;
+        `;
+        badge.textContent = "🔴 Live Demo";
+        randomCard.appendChild(badge);
+
+        // Remove highlight after 8 seconds
+        setTimeout(() => {
+          randomCard.style.transform = originalStyle;
+          randomCard.style.boxShadow = "";
+          randomCard.style.borderLeftColor = "";
+          if (randomCard.contains(badge)) {
+            randomCard.removeChild(badge);
+          }
+        }, 8000);
+      }
     </script>
+
+    <style>
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    </style>
   </body>
 </html>
