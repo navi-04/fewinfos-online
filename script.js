@@ -423,18 +423,28 @@ if (document.getElementById("galleryGrid")) {
 
     galleryGrid.innerHTML = "";
 
+    if (filteredGallery.length === 0) {
+      galleryGrid.innerHTML = `
+        <div class="empty-state" style="grid-column: 1 / -1;">
+          <i class="fas fa-images"></i>
+          <h3>No Images Found</h3>
+          <p>There are no images in the "${tag}" category. Please try another filter.</p>
+        </div>
+      `;
+      return;
+    }
+
     filteredGallery.forEach((item, index) => {
       const galleryItem = document.createElement("div");
       galleryItem.className = "gallery-item";
-      galleryItem.setAttribute("data-aos", "fade-up");
-      galleryItem.setAttribute("data-aos-delay", (index * 100).toString());
-
+      
       galleryItem.innerHTML = `
-                <img src="${item.src}" alt="${item.caption}" loading="lazy">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
-            `;
+        <img src="${item.src}" alt="${item.caption}" loading="lazy">
+        <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+          <div class="gallery-caption">${item.caption}</div>
+        </div>
+      `;
 
       // Add click event for lightbox
       galleryItem.addEventListener("click", () => openLightbox(item));
@@ -443,7 +453,9 @@ if (document.getElementById("galleryGrid")) {
     });
 
     // Refresh AOS after dynamic content
-    AOS.refresh();
+    if (typeof AOS !== 'undefined') {
+      AOS.refresh();
+    }
   }
 
   // Tag filter functionality
@@ -471,9 +483,14 @@ if (document.getElementById("galleryGrid")) {
     const lightboxImage = document.getElementById("lightboxImage");
     const lightboxCaption = document.getElementById("lightboxCaption");
 
-    lightboxImage.src = item.src.replace("w=500&h=300", "w=1200&h=800");
+    lightboxImage.src = item.src;
     lightboxCaption.textContent = item.caption;
     lightbox.style.display = "flex";
+    
+    // Add active class after a short delay for animation
+    setTimeout(() => {
+      lightbox.classList.add("active");
+    }, 10);
 
     // Prevent body scroll
     document.body.style.overflow = "hidden";
@@ -481,8 +498,13 @@ if (document.getElementById("galleryGrid")) {
 
   function closeLightbox() {
     const lightbox = document.getElementById("lightbox");
-    lightbox.style.display = "none";
-    document.body.style.overflow = "auto";
+    lightbox.classList.remove("active");
+    
+    // Wait for animation to complete before hiding
+    setTimeout(() => {
+      lightbox.style.display = "none";
+      document.body.style.overflow = "auto";
+    }, 300);
   }
 
   // Close lightbox events
@@ -501,6 +523,40 @@ if (document.getElementById("galleryGrid")) {
       closeLightbox();
     }
   });
+
+  // Keyboard navigation for lightbox
+  document.addEventListener("keydown", function(e) {
+    if (document.getElementById("lightbox").style.display !== "flex") return;
+    
+    if (e.key === "ArrowRight") {
+      navigateGallery(1);
+    } else if (e.key === "ArrowLeft") {
+      navigateGallery(-1);
+    }
+  });
+  
+  // Navigate through gallery images
+  function navigateGallery(direction) {
+    let filteredGallery = galleryData;
+    if (currentTag !== "all") {
+      filteredGallery = galleryData.filter((item) => item.tags.includes(currentTag));
+    }
+    
+    const currentImage = document.getElementById("lightboxImage").src;
+    const currentIndex = filteredGallery.findIndex(item => item.src === currentImage.split('/').pop());
+    
+    let newIndex = currentIndex + direction;
+    if (newIndex < 0) newIndex = filteredGallery.length - 1;
+    if (newIndex >= filteredGallery.length) newIndex = 0;
+    
+    const newItem = filteredGallery[newIndex];
+    
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    
+    lightboxImage.src = newItem.src;
+    lightboxCaption.textContent = newItem.caption;
+  }
 
   // Initial render
   renderGallery();

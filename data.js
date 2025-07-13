@@ -2,6 +2,7 @@
 const sitePasscode = "FIW123";
 
 // AI Tools Workshop Data
+
 const aiToolsData =  [
   // 0–8: WEBSITE CREATION TOOLS
   {
@@ -404,9 +405,9 @@ const eventsData = [
     category: "workshop",
     isProtected: true,
     passcode: "FIW123",
-    duration: "6 hours",
+    duration: "2 hours",
     instructor: "AI Expert Team",
-    price: "₹999",
+    price: "₹99",
     tags: ["AI", "Programming", "Online", "Tools", "Workshop"],
     toolsCount: 46,
     aiToolsData: aiToolsData,
@@ -488,102 +489,116 @@ const eventsData = [
     status: "completed",
     category: "webinar",
   },
+  {
+    id: 9,
+    title: "Advanced AI Prompt Engineering Masterclass",
+    date: "2025-07-13",
+    location: "Online Event (Microsoft Teams)",
+    description:
+      "Become an expert in crafting effective prompts for 32 popular AI models including GPT-4, Claude, Midjourney, and DALL-E 3. Learn advanced techniques for context management, chain-of-thought reasoning, and specialized outputs across text, code, and image generation. Includes personalized feedback, optimization strategies, and industry-specific templates.",
+    status: "live",
+    category: "workshop",
+    isProtected: true,
+    passcode: "FIW245",
+    duration: "3 hours",
+    instructor: "Dr. Maya Rodriguez",
+    price: "₹149",
+    tags: ["AI", "Prompt Engineering", "Online", "GPT", "Workshop"],
+    toolsCount: 32,
+    aiToolsData: aiToolsData,
+},
+{
+    id: 10,
+    title: "AI for Business Analytics Bootcamp",
+    date: "2025-097-13",
+    location: "Online Event (Zoom)",
+    description:
+      "Transform your business data into actionable insights with 28 cutting-edge AI analytics tools. From predictive modeling to automated reporting, learn how to implement AI-powered dashboards, natural language querying, and anomaly detection systems. Features hands-on sessions with real business datasets, ROI calculation frameworks, and integration strategies for popular business intelligence platforms.",
+    status: "live",
+    category: "bootcamp",
+    isProtected: true,
+    passcode: "FIW367",
+    duration: "4 hours (2 sessions)",
+    instructor: "Business Intelligence Team",
+    price: "₹199",
+    tags: ["AI", "Business Analytics", "Data", "Online", "Bootcamp"],
+    toolsCount: 28,
+    aiToolsData: aiToolsData,
+},
 ];
 
 const galleryData = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&h=300&fit=crop",
+    src: "images/1.jpg",
     caption:
       "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
     tags: ["2025", "summits", "ai", "innovation"],
     year: "2025",
   },
   {
-    id: 2,
-    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop",
-    caption:
-      "AI Workshop 2024 - Participants working on machine learning projects",
-    tags: ["2024", "workshops", "ai"],
-    year: "2024",
-  },
-  {
     id: 3,
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
+    src: "images/3.jpg",
     caption: "Team Collaboration Session - Innovation Hub",
     tags: ["2024", "workshops", "collaboration"],
     year: "2024",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&h=300&fit=crop",
+    src: "images/4.jpg",
     caption: "Digital Marketing Webinar - Guest Speaker Presentation",
     tags: ["2024", "webinars", "marketing"],
     year: "2024",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&h=300&fit=crop",
+    src: "images/5.jpg",
     caption: "Startup Pitch Competition - Finalist Presentations",
     tags: ["2023", "competitions", "startups"],
     year: "2023",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop",
+    src: "images/6.jpg",
     caption: "Web Development Bootcamp - Coding Session",
     tags: ["2023", "workshops", "coding"],
     year: "2023",
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop",
+    src: "images/7.jpg",
     caption: "Data Science Conference - Keynote Speaker",
     tags: ["2023", "conferences", "data-science"],
     year: "2023",
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&h=300&fit=crop",
+    src: "images/8.jpg",
     caption: "Cybersecurity Workshop - Hands-on Training",
     tags: ["2023", "workshops", "cybersecurity"],
     year: "2023",
   },
   {
     id: 9,
-    src: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=500&h=300&fit=crop",
+    src: "images/9.jpg",
     caption: "Innovation Showcase - Product Demonstrations",
     tags: ["2024", "showcases", "innovation"],
     year: "2024",
   },
   {
     id: 10,
-    src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&h=300&fit=crop",
+    src: "images/10.jpg",
     caption: "Networking Event - Industry Professionals",
     tags: ["2024", "networking", "professionals"],
     year: "2024",
   },
   {
     id: 11,
-    src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop",
+    src: "images/11.jpg",
     caption: "Tech Talk Series - Cloud Computing",
     tags: ["2023", "webinars", "cloud"],
     year: "2023",
-  },
-  {
-    id: 12,
-    src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=300&fit=crop",
-    caption: "Design Thinking Workshop - Creative Solutions",
-    tags: ["2024", "workshops", "design"],
-    year: "2024",
-  },
-  {
-    id: 13,
-    src: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=500&h=300&fit=crop",
-    caption: "Leadership Summit - Executive Panel Discussion",
-    tags: ["2023", "conferences", "leadership"],
-    year: "2023",
-  },
+  }
 ];
 
 // Contact information
