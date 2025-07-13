@@ -2,8 +2,7 @@
 const sitePasscode = "FIW123";
 
 // AI Tools Workshop Data
-
-const aiToolsData =  [
+const aiToolsData = [
   // 0–8: WEBSITE CREATION TOOLS
   {
     type: 0,
@@ -114,13 +113,14 @@ const aiToolsData =  [
 
   // 13: AGENT TOOL
   {
-    type: 2,
+    type: 1,
     level: 13,
     topic: "AGENT - TASKADE",
     description: "Collaborative task manager with AI agents for task generation and automation.",
     link: "https://www.taskade.com/",
     prompt: "Create a weekly task planner for a web development project."
   },
+  
 
   // 14–16: EXTENSIONS
   {
@@ -391,6 +391,8 @@ const aiToolsData =  [
   }
 
 ];
+
+
 
 // Sample data for events and gallery
 const eventsData = [
