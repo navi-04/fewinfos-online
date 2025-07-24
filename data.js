@@ -541,65 +541,74 @@ const galleryData = [
   {
     id: 3,
     src: "images/3.jpg",
-    caption: "Team Collaboration Session - Innovation Hub",
-    tags: ["2024", "workshops", "collaboration"],
-    year: "2024",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 4,
     src: "images/4.jpg",
-    caption: "Digital Marketing Webinar - Guest Speaker Presentation",
-    tags: ["2024", "webinars", "marketing"],
-    year: "2024",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 5,
     src: "images/5.jpg",
-    caption: "Startup Pitch Competition - Finalist Presentations",
-    tags: ["2023", "competitions", "startups"],
-    year: "2023",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 6,
     src: "images/6.jpg",
-    caption: "Web Development Bootcamp - Coding Session",
-    tags: ["2023", "workshops", "coding"],
-    year: "2023",
+     caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 7,
     src: "images/7.jpg",
-    caption: "Data Science Conference - Keynote Speaker",
-    tags: ["2023", "conferences", "data-science"],
-    year: "2023",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 8,
     src: "images/8.jpg",
-    caption: "Cybersecurity Workshop - Hands-on Training",
-    tags: ["2023", "workshops", "cybersecurity"],
-    year: "2023",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 9,
     src: "images/9.jpg",
-    caption: "Innovation Showcase - Product Demonstrations",
-    tags: ["2024", "showcases", "innovation"],
-    year: "2024",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 10,
     src: "images/10.jpg",
-    caption: "Networking Event - Industry Professionals",
-    tags: ["2024", "networking", "professionals"],
-    year: "2024",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   },
   {
     id: 11,
     src: "images/11.jpg",
-    caption: "Tech Talk Series - Cloud Computing",
-    tags: ["2023", "webinars", "cloud"],
-    year: "2023",
+    caption:
+      "AI Innovation Summit 2025 - Keynote presentation at MKCE Karur featuring industry leaders discussing the future of AI",
+    tags: ["2025", "summits", "ai", "innovation"],
+    year: "2025",
   }
 ];
 
